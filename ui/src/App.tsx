@@ -1,10 +1,14 @@
-import Header from "./components/header";
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Landingpage } from "./components/Landingpage";
 function App() {
   return (
     <>
-      <h1>Polka Chatt</h1>
-      <Header />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landingpage />}></Route>
+        </Routes>
+      </Router>
     </>
   );
 }
