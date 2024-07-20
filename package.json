@@ -11,9 +11,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@polkadot/api": "^12.2.1"
+    "@nomicfoundation/hardhat-ethers": "^3.0.6",
+    "@polkadot/api": "^12.2.1",
+    "ethers": "^6.13.1",
+    "hardhat": "^2.22.6"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "nodemon": "^3.1.4"
   }
 }

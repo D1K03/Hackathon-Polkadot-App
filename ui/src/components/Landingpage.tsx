@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Landingpage(): JSX.Element {
   return (
     <>
@@ -11,7 +13,9 @@ export function Landingpage(): JSX.Element {
           >
             Welcome to Polkadot Chating Dapp
           </h1>
-          <button className="start-button">Start Chatting</button>
+          <Link to="/auth">
+            <button className="start-button">Start Chatting</button>
+          </Link>
         </div>
       </div>
     </>
