@@ -18,7 +18,6 @@ export function Landingpage(): JSX.Element {
           </Link>
         </div>
       </div>
-      <footer className="footer">Footer</footer>
     </>
   );
 }

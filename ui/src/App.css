@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 body{
+  height: 100vh;
   overflow-y: hidden;
 }
 
@@ -9,9 +10,10 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   overflow-y: hidden;
-  background: linear-gradient(135deg, #e6007a 0%, #ef4056 100%);
+  background-color: #e00e70;
+  background: linear-gradient(135deg, #e6007a 0%,#e00e70 100%);
   font-family: 'Roboto', sans-serif;
 }
 
@@ -56,66 +58,5 @@ h1 {
   box-shadow: 0 0 0 3px rgba(230, 0, 122, 0.4);
 }
 
-/* src/components/Footer.css */
-.footer {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  padding: 20px 0;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.footer h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.footer p {
-  font-size: 0.875rem;
-  margin: 10px 0;
-}
-
-.footer-links {
-  margin: 20px 0;
-}
-
-.footer-links a {
-  color: #ecf0f1;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #3498db;
-}
-
-.footer-socials {
-  margin: 20px 0;
-}
-
-.footer-socials a {
-  color: #ecf0f1;
-  margin: 0 10px;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-  color: #3498db;
-}
-
-.footer-bottom {
-  font-size: 0.75rem;
-  margin-top: 20px;
-  border-top: 1px solid #34495e;
-  padding-top: 10px;
-}
 

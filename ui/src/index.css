@@ -8,15 +8,24 @@
   box-sizing: border-box;
 }
 
+a, Link {
+  text-decoration: none;
+  outline: none;
+}
+
 body {
+
+  background-color: rgb(224, 14, 112);
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-decoration: none;
+  outline: none;
 }
 
 body h1 { 
-  color: rgb(224, 14, 112);
+  color: white;
   padding: 0 0 0 2px;
 }
 
-header {
-
-}
 
