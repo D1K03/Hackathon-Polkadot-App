@@ -11,13 +11,14 @@ export function Landingpage(): JSX.Element {
               color: "white",
             }}
           >
-            Welcome to Polkadot Chating Dapp
+            Welcome to Polkadot Chating DAPP
           </h1>
           <Link to="/auth">
             <button className="start-button">Start Chatting</button>
           </Link>
         </div>
       </div>
+      <footer className="footer">Footer</footer>
     </>
   );
 }

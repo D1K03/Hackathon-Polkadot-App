@@ -1,29 +1,31 @@
-// contracts/Chat.sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract Chat {
-    mapping(address => string) public users;
-    mapping(address => bool) public registeredUsers;
-    mapping(address => string[]) public userMessages;
+    // Event to notify when a new message is sent
+    event MessageSent(address indexed from, string message);
 
-    event UserRegistered(address user, string username);
-    event MessageSent(address from, string message);
-
-    function registerUser(string memory username) public {
-        require(!registeredUsers[msg.sender], "User already registered");
-        users[msg.sender] = username;
-        registeredUsers[msg.sender] = true;
-        emit UserRegistered(msg.sender, username);
-    }
-
-    function sendMessage(string memory message) public {
-        require(registeredUsers[msg.sender], "User not registered");
-        userMessages[msg.sender].push(message);
+    // Function to send a message
+    function sendMessage(string calldata message) public {
         emit MessageSent(msg.sender, message);
     }
 
-    function getMessages() public view returns (string[] memory) {
-        return userMessages[msg.sender];
+    // Function to get the latest messages
+    function getMessages()
+        public
+        view
+        returns (address[] memory, string[] memory)
+    {
+        return (users, messages);
+    }
+
+    // Internal variables to store messages and user addresses
+    address[] private users;
+    string[] private messages;
+
+    // Internal function to record a new message
+    function _recordMessage(string memory message) internal {
+        users.push(msg.sender);
+        messages.push(message);
     }
 }

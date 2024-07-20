@@ -1,13 +1,16 @@
 /* src/components/LandingPage.css */
-/* src/components/LandingPage.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body{
+  overflow-y: hidden;
+}
 
 .landing-page {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow-y: hidden;
   background: linear-gradient(135deg, #e6007a 0%, #ef4056 100%);
   font-family: 'Roboto', sans-serif;
 }
@@ -15,15 +18,17 @@
 .content {
   text-align: center;
   color: white;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 20px;
-  color: white;
-  /* color: white; */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .start-button {
@@ -31,22 +36,86 @@ h1 {
   color: #e6007a;
   border: none;
   padding: 15px 30px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .start-button:hover {
   background-color: #ef4056;
   color: white;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
 }
 
 .start-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(230, 0, 122, 0.4);
 }
+
+/* src/components/Footer.css */
+.footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px 0;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  font-size: 0.875rem;
+  margin: 10px 0;
+}
+
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3498db;
+}
+
+.footer-socials {
+  margin: 20px 0;
+}
+
+.footer-socials a {
+  color: #ecf0f1;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #3498db;
+}
+
+.footer-bottom {
+  font-size: 0.75rem;
+  margin-top: 20px;
+  border-top: 1px solid #34495e;
+  padding-top: 10px;
+}
+
