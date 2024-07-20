@@ -1,7 +1,16 @@
-export default function header() {
+function SendButton() {
+  return (
+  <button>
+    Connect
+  </button>
+  );
+}
+
+export default function ChatApp() {
   return (
     <>
-      <h2>Header Components</h2>
+      <p style={{ fontStyle: 'italic' }}>Provides communication between blockchains</p>
+      <SendButton/>
     </>
   );
 }
