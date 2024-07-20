@@ -23,8 +23,6 @@ export default function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can add the logic to handle the form submission,
-    // such as sending the username and wallet token to your server.
     console.log("Username:", username);
     console.log("Wallet Token:", walletToken);
   };
