@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Landingpage } from "./components/Landingpage";
 import Auth from "./components/Auth";
+import ChatApp from "./components/header";
 function App() {
   return (
     <>
@@ -9,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landingpage />}></Route>
           <Route path="/auth" element={<Auth />}></Route>
-          <Route path=":auth_id/chat"></Route>
+          <Route path=":auth_id/chat" element={<ChatApp />}></Route>
         </Routes>
       </Router>
     </>

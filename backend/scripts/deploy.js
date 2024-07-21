@@ -1,17 +1,19 @@
-// scripts/deploy.js
+const hre = require("hardhat");
+
 async function main() {
-  const [deployer] = await ethers.getSigners();
+  const [deployer] = await hre.ethers.getSigners();
   console.log("Deploying contracts with the account:", deployer.address);
 
-  // Replace 'Chat' with your contract name if different
-  const Chat = await ethers.getContractFactory("Chat");
+  const Chat = await hre.ethers.getContractFactory("Chat");
   const chat = await Chat.deploy();
-  await chat.deployed();
 
-  console.log("Chat contract deployed to:", chat.address);
+  console.log("Deploying contract...");
+  await chat.waitForDeployment();
+  const addr = await chat.getAddress();
+  console.log("Chat contract deployed to:", addr);
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error("Error deploying contract:", error);
   process.exitCode = 1;
 });
