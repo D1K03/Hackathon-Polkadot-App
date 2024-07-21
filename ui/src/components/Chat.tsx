@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Web3 from "web3";
 import chatContract from "../client"; // Ensure this is your contract instance
 import "../styles/Chat.css"; // Import your CSS file
-
+import { Link } from "react-router-dom";
 export default function Chat() {
   const [messageContent, setMessageContent] = useState("");
   const [messages, setMessages] = useState([]);
@@ -48,14 +48,14 @@ export default function Chat() {
         chatContract.options.jsonInterface,
         chatContract.options.address
       );
-
+      console.log(accounts);
       await chatContractWithSigner.methods
         .sendMessage(messageContent)
         .send({ from: accounts[0] });
 
-      console.log("Message sent successfully");
-      fetchMessages(); // Refresh messages after sending
       setMessageContent(""); // Clear input field
+      fetchMessages(); // Refresh messages after sending
+      console.log("Message sent successfully");
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -76,7 +76,13 @@ export default function Chat() {
       const fetchedMessages = await chatContractWithSigner.methods
         .getMessages()
         .call();
+      console.log(accounts);
+      console.log(fetchedMessages);
+      const filtered = fetchedMessages.filter(
+        (message) => message.sender === accounts[0]
+      );
       setMessages(fetchedMessages);
+      console.log(filtered);
       console.log(fetchMessages);
     } catch (error) {
       console.error("Error fetching messages:", error);
@@ -92,7 +98,9 @@ export default function Chat() {
 
   return (
     <div className="chat-container">
-      <h1>Chat</h1>
+      <Link to="/">
+        <h1>Chat</h1>
+      </Link>
       <div className="messages">
         {messages.map((message, index) => (
           <div
