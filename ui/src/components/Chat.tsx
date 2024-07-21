@@ -54,6 +54,7 @@ export default function Chat() {
         .send({ from: accounts[0] });
 
       setMessageContent(""); // Clear input field
+      alert("Message sent successfully");
       fetchMessages(); // Refresh messages after sending
       console.log("Message sent successfully");
     } catch (error) {
@@ -76,14 +77,15 @@ export default function Chat() {
       const fetchedMessages = await chatContractWithSigner.methods
         .getMessages()
         .call();
-      console.log(accounts);
       console.log(fetchedMessages);
-      const filtered = fetchedMessages.filter(
-        (message) => message.sender === accounts[0]
-      );
-      setMessages(fetchedMessages);
-      // console.log(filtered);
-      // console.log(fetchMessages);
+      if (fetchedMessages) {
+        const acc = await web3Instance.eth.getAccounts();
+        const filtered = fetchedMessages.filter(
+          (message) => message[0] !== acc[0]
+        );
+        console.log(filtered);
+        setMessages(filtered);
+      }
     } catch (error) {
       console.error("Error fetching messages:", error);
     }

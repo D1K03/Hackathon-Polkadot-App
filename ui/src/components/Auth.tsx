@@ -75,103 +75,27 @@ export default function Auth() {
         chatContract.options.address
       );
       console.log(accounts);
+
+      const gottenUSer = await chatContractWithSigner.methods
+        .getUser(accounts[0])
+        .call();
+      console.log(gottenUSer);
+      if (gottenUSer[1] === true) {
+        console.log("User already registered");
+        const roomId = uuidv4();
+        navigate(`/${roomId}/chat`);
+        return;
+      }
+
       await chatContractWithSigner.methods
         .register(username)
-        .send({ from: accounts[0] })
-        .then(() => {
-          console.log("Sent");
-        })
-        .catch((err) => console.log("Error from payment sean"));
-      console.log(chatContractWithSigner.methods);
+        .send({ from: accounts[0] });
       const roomId = uuidv4();
       navigate(`/${roomId}/chat`);
+      console.log(chatContractWithSigner.methods);
       console.log("User registered successfully");
     } catch (error) {
       console.error("Error registering user:", error);
-    }
-  };
-
-  const sendMessage = async () => {
-    if (!web3Instance || accounts.length === 0) {
-      console.error("Web3 is not initialized or no accounts found.");
-      return;
-    }
-
-    try {
-      const chatContractWithSigner = new web3Instance.eth.Contract(
-        chatContract.options.jsonInterface,
-        chatContract.options.address
-      );
-
-      await chatContractWithSigner.methods
-        .sendMessage(messageContent)
-        .send({ from: accounts[0] });
-      console.log("Message sent successfully");
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
-
-  const fetchMessages = async () => {
-    if (!web3Instance) {
-      console.error("Web3 is not initialized.");
-      return;
-    }
-
-    try {
-      const chatContractWithSigner = new web3Instance.eth.Contract(
-        chatContract.options.jsonInterface,
-        chatContract.options.address
-      );
-
-      const fetchedMessages = await chatContractWithSigner.methods
-        .getMessages()
-        .call();
-      setMessages(fetchedMessages);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
-
-  const fetchUserDetails = async () => {
-    if (!web3Instance || accounts.length === 0) {
-      console.error("Web3 is not initialized or no accounts found.");
-      return;
-    }
-
-    try {
-      const chatContractWithSigner = new web3Instance.eth.Contract(
-        chatContract.options.jsonInterface,
-        chatContract.options.address
-      );
-
-      const details = await chatContractWithSigner.methods
-        .getUser(accounts[0])
-        .call();
-      setUserDetails({ username: details[0], isRegistered: details[1] });
-    } catch (error) {
-      console.error("Error fetching user details:", error);
-    }
-  };
-
-  const fetchUserAddress = async (username) => {
-    if (!web3Instance) {
-      console.error("Web3 is not initialized.");
-      return;
-    }
-
-    try {
-      const chatContractWithSigner = new web3Instance.eth.Contract(
-        chatContract.options.jsonInterface,
-        chatContract.options.address
-      );
-
-      const address = await chatContractWithSigner.methods
-        .getUserAddress(username)
-        .call();
-      setUserAddress(address);
-    } catch (error) {
-      console.error("Error fetching user address:", error);
     }
   };
 
