@@ -81,7 +81,7 @@ export default function Chat() {
       const filtered = fetchedMessages.filter(
         (message) => message.sender === accounts[0]
       );
-      setMessages(filtered);
+      setMessages(fetchedMessages);
       console.log(filtered);
       console.log(fetchMessages);
     } catch (error) {
