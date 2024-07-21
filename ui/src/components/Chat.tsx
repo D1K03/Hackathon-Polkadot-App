@@ -82,8 +82,8 @@ export default function Chat() {
         (message) => message.sender === accounts[0]
       );
       setMessages(fetchedMessages);
-      console.log(filtered);
-      console.log(fetchMessages);
+      // console.log(filtered);
+      // console.log(fetchMessages);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
@@ -91,7 +91,7 @@ export default function Chat() {
 
   useEffect(() => {
     if (web3Instance) {
-      const intervalId = setInterval(fetchMessages, 2000);
+      const intervalId = setInterval(fetchMessages, 1000);
       return () => clearInterval(intervalId);
     }
   }, [web3Instance]);

@@ -36,7 +36,10 @@ contract Chat {
 
     function register(string memory _username) public {
         require(!users[msg.sender].isRegistered, "User already registered");
-        require(usernameToAddress[_username] == address(0), "Username already taken");
+        require(
+            usernameToAddress[_username] == address(0),
+            "Username already taken"
+        );
 
         users[msg.sender] = User(_username, true);
         usernameToAddress[_username] = msg.sender;
@@ -44,12 +47,16 @@ contract Chat {
         emit UserRegistered(msg.sender, _username);
     }
 
-    function getUser(address _userAddress) public view returns (string memory username, bool isRegistered) {
+    function getUser(
+        address _userAddress
+    ) public view returns (string memory username, bool isRegistered) {
         User memory user = users[_userAddress];
         return (user.username, user.isRegistered);
     }
 
-    function getUserAddress(string memory _username) public view returns (address) {
+    function getUserAddress(
+        string memory _username
+    ) public view returns (address) {
         return usernameToAddress[_username];
     }
 }
