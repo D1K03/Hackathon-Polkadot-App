@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Web3 from "web3";
 import chatContract from "../client"; // Ensure this is your contract instance
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid"; // Import UUID generator
 import "../styles/Auth.css"; // Import your CSS file
 
 const providerRPC = "https://rpc.api.moonbase.moonbeam.network";
@@ -18,6 +19,7 @@ export default function Auth() {
   const [userAddress, setUserAddress] = useState("");
   const [accounts, setAccounts] = useState<string[]>([]);
   const [web3Instance, setWeb3Instance] = useState<Web3 | null>(null);
+  const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
     const initializeWeb3 = async () => {
@@ -72,11 +74,16 @@ export default function Auth() {
         chatContract.options.jsonInterface,
         chatContract.options.address
       );
-
+      console.log(accounts);
       await chatContractWithSigner.methods
         .register(username)
         .send({ from: accounts[0] })
-        .then(() => console.log("Sent"));
+        .then(() => {
+          console.log("Sent");
+          const roomId = uuidv4();
+          navigate(`/${roomId}/chat`);
+        })
+        .catch((err) => console.log("Error from payment sean"));
       console.log("User registered successfully");
     } catch (error) {
       console.error("Error registering user:", error);
