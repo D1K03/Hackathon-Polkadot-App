@@ -1,16 +1,22 @@
-import web3 from "web3";
+import Web3 from "web3";
 
-export const registerUser = async (chatContract, username) => {
-	const accounts = await web3.eth.getAccounts();
-	await chatContract.methods.register(username).send({ from: accounts[0] });
-};
 
-export const sendMessage = async () => {
-	const accounts = await web3.eth.getAccounts();
-	await chatContract.methods.sendMessage(messageContent).send({ from: accounts[0] });
-};
 
-export const fetchMessages = async () => {
-	const messages = await chatContract.methods.getMessages().call();
-	setMessages(messages);
+export const initializeWeb3 = async (setAccounts = null, setWeb3Instance = null) => {
+	if (window.ethereum) {
+		const web3 = new Web3(window.ethereum);
+		setWeb3Instance(web3);
+
+		try {
+			// Request accounts from MetaMask
+			const accounts = await window.ethereum.request({
+				method: "eth_requestAccounts",
+			});
+			setAccounts(accounts);
+		} catch (error) {
+			console.error("Error requesting accounts:", error.message);
+		}
+	} else {
+		console.error("MetaMask is not installed.");
+	}
 };

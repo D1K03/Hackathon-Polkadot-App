@@ -1,0 +1,122 @@
+/* Chat Container Styles */
+.chat-container {
+  width: 100%;
+  max-width:  70%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow: hidden;
+}
+
+/* Chat Header */
+.chat-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Chat Form Styles */
+.chat-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chat-form input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.chat-form input:focus {
+  border-color: #e00e70; /* Input border color matches theme */
+}
+
+.chat-form button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #e00e70; /* Button background matches theme */
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.chat-form button:hover {
+  background: #d0065c; /* Slightly darker shade for hover effect */
+  transform: scale(1.05);
+}
+
+.chat-form button:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+/* Messages Container Styles */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.messages p {
+  margin: 0;
+  padding: 10px;
+  border-radius: 20px;
+  background: #f1f1f1; /* Light background for messages */
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+/* Individual Message Styles */
+.messages .message {
+  background: #e00e70; /* Message background matches theme */
+  color: #fff;
+  border-radius: 15px;
+  padding: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  word-break: break-word;
+  max-width: 80%;
+}
+
+.messages .message:nth-child(odd) {
+  background: #e00e70; /* Same theme color for odd messages */
+  color: #fff;
+  margin-left: auto;
+}
+
+.messages .message:nth-child(even) {
+  background: #f8c6d9; /* Lighter complementary color for even messages */
+  color: #333;
+  margin-right: auto;
+}
+
+/* Scrollbar Styles */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #e00e70; /* Scrollbar thumb color matches theme */
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #d0065c; /* Darker shade for scrollbar thumb on hover */
+}

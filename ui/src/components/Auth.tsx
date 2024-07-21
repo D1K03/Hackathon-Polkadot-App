@@ -80,10 +80,11 @@ export default function Auth() {
         .send({ from: accounts[0] })
         .then(() => {
           console.log("Sent");
-          const roomId = uuidv4();
-          navigate(`/${roomId}/chat`);
         })
         .catch((err) => console.log("Error from payment sean"));
+      console.log(chatContractWithSigner.methods);
+      const roomId = uuidv4();
+      navigate(`/${roomId}/chat`);
       console.log("User registered successfully");
     } catch (error) {
       console.error("Error registering user:", error);

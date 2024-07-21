@@ -4,7 +4,27 @@ const providerRPC = {
 	moonbase: "https://rpc.api.moonbase.moonbeam.network",
 };
 
-export const web3 = new Web3(providerRPC.moonbase);
+export const web3 = new Web3(window.ethereum);
+
+// export const initializeWeb3 = async () => {
+// 	if (window.ethereum) {
+// 		const web3 = new Web3(window.ethereum);
+// 		setWeb3Instance(web3);
+
+// 		try {
+// 			// Request accounts from MetaMask
+// 			const accounts = await window.ethereum.request({
+// 				method: "eth_requestAccounts",
+// 			});
+// 			setAccounts(accounts);
+// 		} catch (error) {
+// 			console.error("Error requesting accounts:", error.message);
+// 		}
+// 	} else {
+// 		console.error("MetaMask is not installed.");
+// 	}
+// };
+
 const CHAT_ABI = [
 	{
 		anonymous: false,
@@ -141,4 +161,8 @@ const CHAT_ABI = [
 ];
 const CHAT_ADDRESS = "0x2a501Aa74b1e22DC3A5c6855fF794e11140761d2"; // Replace with your deployed contract address
 const chatContract = new web3.eth.Contract(CHAT_ABI, CHAT_ADDRESS);
+export const chatContractWithSigner = new web3.eth.Contract(
+	chatContract.options.jsonInterface,
+	chatContract.options.address
+);
 export default chatContract
